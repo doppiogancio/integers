@@ -1,9 +1,16 @@
 package integers
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
+
+func ExampleJoin() {
+	joinedString := Join([]int{1,3,7}, "-")
+	fmt.Println(joinedString)
+	// Output: 1-3-7
+}
 
 func TestMakeRangeWithStep(t *testing.T) {
 	tests := map[string]struct {
