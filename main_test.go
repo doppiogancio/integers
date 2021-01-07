@@ -144,12 +144,12 @@ func TestFind(t *testing.T) {
 	}
 }
 
-func ExampleFind_existing_number() {
+func ExampleFind_existingnumber() {
 	fmt.Println(Find([]int{4,8,3}, 3))
 	// Output: 2
 }
 
-func ExampleFind_not_existing_number() {
+func ExampleFind_notexistingnumber() {
 	fmt.Println(Find([]int{4,8,3}, 5))
 	// Output: -1
 }
@@ -184,6 +184,11 @@ func TestContains(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleContains() {
+	fmt.Println(Contains([]int{7,10,4},4))
+	// Output: true
 }
 
 func TestRemoveIndex(t *testing.T) {
@@ -233,6 +238,11 @@ func TestRemoveIndex(t *testing.T) {
 	}
 }
 
+func ExampleRemoveIndex() {
+	fmt.Println(RemoveIndex([]int{22,33,44}, 0))
+	// Output: [33, 44]
+}
+
 func TestRemoveValue(t *testing.T) {
 	tests := map[string]struct {
 		array []int
@@ -278,4 +288,9 @@ func TestRemoveValue(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleRemoveValue() {
+	fmt.Println(RemoveValue([]int{22,33,44}, 33))
+	// Output: [22, 44]
 }
