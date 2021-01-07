@@ -6,9 +6,35 @@ import (
 	"testing"
 )
 
+func TestJoin(t *testing.T) {
+	tests := map[string]struct {
+		elems  []int
+		separator  string
+		expected string
+	}{
+		"empty": {
+			elems: []int{},
+			separator: "-",
+			expected: "",
+		},
+		"with numbers": {
+			elems: []int{1,2,3,4,5,6,7},
+			separator: "|",
+			expected: "1|2|3|4|5|6|7",
+		},
+	}
+
+	for name, tt := range tests {
+		t.Run(name, func(t *testing.T) {
+			if got := Join(tt.elems, tt.separator); !reflect.DeepEqual(got, tt.expected) {
+				t.Errorf("Join() = %v, want %v", got, tt.expected)
+			}
+		})
+	}
+}
+
 func ExampleJoin() {
-	joinedString := Join([]int{1,3,7}, "-")
-	fmt.Println(joinedString)
+	fmt.Println(Join([]int{1,3,7}, "-"))
 	// Output: 1-3-7
 }
 
@@ -43,6 +69,11 @@ func TestMakeRangeWithStep(t *testing.T) {
 	}
 }
 
+func ExampleMakeRangeWithStep() {
+	fmt.Println(MakeRangeWithStep(0, 8, 2))
+	// Output: [0 2 4 6 8]
+}
+
 func TestMakeRange(t *testing.T) {
 	tests := map[string]struct {
 		min  int
@@ -69,6 +100,11 @@ func TestMakeRange(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleMakeRange() {
+	fmt.Println(MakeRange(1, 3))
+	// Output: [1 2 3]
 }
 
 func TestFind(t *testing.T) {
@@ -106,6 +142,16 @@ func TestFind(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleFind_existing_number() {
+	fmt.Println(Find([]int{4,8,3}, 3))
+	// Output: 2
+}
+
+func ExampleFind_not_existing_number() {
+	fmt.Println(Find([]int{4,8,3}, 5))
+	// Output: -1
 }
 
 func TestContains(t *testing.T) {
