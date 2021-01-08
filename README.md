@@ -3,7 +3,7 @@ Package integers [![GoDoc](https://godoc.org/github.com/doppiogancio/integers?st
 
 Package integers implements simple functions to manipulate integer numbers
 
-Examples:
+## Examples:
 ```
 for _, x := range integers.MakeRange(1, 9) {
 		...
